@@ -1,0 +1,81 @@
+# .gitignore para un proyecto Django con Poetry
+
+# Entornos virtuales
+.venv/
+env/
+venv/
+
+# Archivos de Poetry
+poetry.lock
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Archivos de configuración del entorno
+*.env
+.env.*
+*.ini
+*.cfg
+
+# Archivos de bases de datos temporales
+*.sqlite3
+db.sqlite3
+
+# Archivos de logs
+*.log
+*.out
+*.err
+
+# Archivos de caché y compilación
+*.bak
+*.swp
+*.swo
+*.DS_Store
+Thumbs.db
+
+# Archivos generados por pytest y cobertura
+.coverage
+htmlcov/
+.tox/
+.nox/
+*.cover
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Archivos de migraciones de Django (solo los archivos generados)
+**/migrations/*.pyc
+**/migrations/*.pyo
+**/migrations/__pycache__/
+**/migrations/*.py, !**/migrations/__init__.py
+
+# Archivos estáticos y media generados
+staticfiles/
+static/
+media/
+
+# Archivos de compilación
+*.egg
+*.egg-info/
+dist/
+build/
+pip-wheel-metadata/
+
+# Archivos de IDEs y editores
+.vscode/
+.idea/
+*.iml
+
+# Archivos de Docker
+docker-compose.override.yml
+*.dockerfile
+
+# Archivos específicos de Python
+Pipfile
+Pipfile.lock
+
