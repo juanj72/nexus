@@ -24,7 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1%o3#ik6*-603@1e!*59des%&i0fbgt-*is8ck$x+n=eqsg+t='
+SECRET_KEY = os.getenv('SECRET_KEY')
+
+GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
+PROBE_LIBRARY_PATH = os.getenv('PROJ_DB')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,7 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'user'
+    'django.contrib.gis',
+    'user',
+    'events'
 ]
 
 # models user settings
@@ -83,7 +88,7 @@ WSGI_APPLICATION = 'nexus.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.contrib.gis.db.backends.mysql',
         'NAME': os.getenv('NAME'),
         'USER': os.getenv('USER_DB'),
         'PASSWORD': os.getenv('PASSWORD'),
