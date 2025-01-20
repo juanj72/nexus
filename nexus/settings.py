@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'user',
-    'events'
+    'events',
+    'leaflet'
 ]
 
 # models user settings
@@ -63,6 +64,18 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'nexus.urls'
+
+
+
+LEAFLET_CONFIG = {
+    'DEFAULT_CENTER': (0, 0),  # Cambia a las coordenadas predeterminadas de tu preferencia
+    'DEFAULT_ZOOM': 3,        # Nivel de zoom predeterminado
+    'MIN_ZOOM': 2,            # Zoom mínimo permitido
+    'MAX_ZOOM': 18,           # Zoom máximo permitido
+}
+
+
+
 
 TEMPLATES = [
     {
@@ -132,7 +145,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Apunta a la carpeta static en el directorio raíz
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
