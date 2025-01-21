@@ -7,3 +7,9 @@ from leaflet.admin import LeafletGeoAdmin
 class EventAdmin(LeafletGeoAdmin):
     class Media:
         js = ('js/geolocation.js',)  
+
+
+
+@admin.register(Attendance)
+class AttendanceAdmin(admin.ModelAdmin):
+    pass
