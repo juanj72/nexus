@@ -45,10 +45,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
+    'drf_yasg',
     'user',
     'events',
     'leaflet',
     'rest_framework',
+    
 ]
 
 # models user settings
