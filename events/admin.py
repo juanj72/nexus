@@ -11,5 +11,5 @@ class EventAdmin(LeafletGeoAdmin):
 
 
 @admin.register(Attendance)
-class AttendanceAdmin(admin.ModelAdmin):
+class AttendanceAdmin(LeafletGeoAdmin):
     pass
