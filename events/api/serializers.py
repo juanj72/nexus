@@ -24,7 +24,21 @@ class EventSerializer(GeoModelSerializer):
             validated_data['location'] = Point(*location_data['coordinates'])
         return super().update(instance, validated_data)
 
-class AttendanceSerializer(serializers.ModelSerializer):
+class AttendanceSerializer(GeoModelSerializer):
     class Meta:
         model = Attendance
         fields = '__all__'
+    
+    def create(self, validated_data):
+        # Convertir el campo 'location_attendance' a un objeto Point
+        location_attendance_data = validated_data.get('location_attendance')
+        if isinstance(location_attendance_data, dict) and location_attendance_data.get('type') == 'Point':
+            validated_data['location_attendance'] = Point(*location_attendance_data['coordinates'])
+        return super().create(validated_data)
+
+    def update(self, instance, validated_data):
+        # Convertir el campo 'location_attendance' a un objeto Point
+        location_attendance_data = validated_data.get('location_attendance')
+        if isinstance(location_attendance_data, dict) and location_attendance_data.get('type') == 'Point':
+            validated_data['location_attendance'] = Point(*location_attendance_data['coordinates'])
+        return super().update(instance, validated_data)

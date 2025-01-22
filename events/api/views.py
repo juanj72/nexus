@@ -26,7 +26,20 @@ class EventList(APIView):
             properties={
                 'name': openapi.Schema(type=openapi.TYPE_STRING, description='Nombre del evento'),
                 'date': openapi.Schema(type=openapi.TYPE_STRING, format=openapi.FORMAT_DATE, description='Fecha del evento'),
-                'location': openapi.Schema(type=openapi.TYPE_OBJECT, description='Ubicación del evento en coordenadas GPS'),
+               'location': openapi.Schema(
+                type=openapi.TYPE_OBJECT,
+                description='Ubicación del evento en formato GeoJSON',
+                properties={
+                    'type': openapi.Schema(type=openapi.TYPE_STRING, description='Siempre "Point"', default='Point'),
+                    'coordinates': openapi.Schema(
+                        type=openapi.TYPE_ARRAY,
+                        description='Coordenadas [longitud, latitud]',
+                        items=openapi.Schema(type=openapi.TYPE_NUMBER),
+                        example=[-73.572229, 4.257138]
+                    ),
+                },
+                required=['type', 'coordinates']
+            ),
                 'description': openapi.Schema(type=openapi.TYPE_STRING, description='Descripción del evento'),
                 'event_manager': openapi.Schema(type=openapi.TYPE_INTEGER, description='ID del administrador del evento'),
                 'status': openapi.Schema(type=openapi.TYPE_STRING, description='Estado del evento, (active, inactive, cancelled, ended)'),
