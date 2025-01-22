@@ -60,10 +60,11 @@ class EventList(APIView):
 # clase que contiene los protocolos de la API de asistencias
 class AttendanceList(APIView):
 
-
+    #aca estoy conviertiendo un dato que está en grados a metros
     def _convert_distance_to_meters(self, distance):
         return distance*111320
 
+    #este metodo lo que hace es validar el request de la peticion, y convierte el dato point en POINT valido para dkango, y poder hacer el calculo de la distancia
     def _validate_distance(self, request):
         event = Event.objects.get(id=request.data['event'])
         point_root = event.location
