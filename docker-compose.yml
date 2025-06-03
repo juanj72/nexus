@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  nexus:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    image: nexus:latest
+    container_name: nexus
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
