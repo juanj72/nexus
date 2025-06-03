@@ -58,7 +58,7 @@ class EventList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 # clase que contiene los protocolos de la API de asistencias
-class AttendanceList(APIView):
+class Attendance(APIView):
 
     #aca estoy conviertiendo un dato que está en grados a metros
     def _convert_distance_to_meters(self, distance):
@@ -124,7 +124,7 @@ class AttendanceList(APIView):
     def post(self, request):
         serializer = AttendanceSerializer(data=request.data)
         Distance = self._validate_distance(request)
-
+        print(Distance)
         if serializer.is_valid() :
             if Distance['valid'] == True:
                 serializer.save()
